@@ -9,11 +9,11 @@ function judge {
         [string]$Name = $(throw "Parameter missing: -name Name")
     )
     if ($?) {
-        Write-Output "$Name 成功"
-        Write-Output "         "
+        Write-Output "成功 $Name"
+        Write-Output "              "
     }
     else {
-        Write-Output "$Name 失败"
+        Write-Output "失败 $Name"
         Write-Output "    " "搞不定就来github提issue" "https://github.com/zsnmwy/max-translation-update-script"
         Pause
         exit
@@ -88,20 +88,25 @@ if ("$test_max" -eq "False") {
     Pause
     exit
 }
+$ErrorActionPreference = "SilentlyContinue"
+$test_strings_po = Test-Path "$now_path\strings.po"
+$ErrorActionPreference = "Continue"
+if ("$test_strings_po" -eq "True") {
+    $date = Get-Date -Format MMddHHmm
+    Write-Output "检测到原翻译目录存在 srtings.po"
+    Move-Item -Path "$now_path\strings.po" -Destination "$file_path\strings.po(此为原目录的翻译，去掉括号内的内容以及两边的括号即可用 时间戳 $date)"
+    judge -Name "备份原strings.po 到脚本目录"
+    Move-Item -Path "$file_path\strings.po" -Destination "$now_path\strings.po"
+    judge -Name "移动strings.po 到翻译目录中"
+}
+else {
+    Write-Output "没有发现strings.po  直接移动strings.po"
+    Move-Item -Path "$file_path\strings.po" -Destination "$now_path\strings.po"
+    judge -Name "移动strings.po 到翻译目录中"
+}
 
-$date = Get-Date -Format MMddHHmm
-
-Move-Item -Path "$now_path\strings_preinstalled_zh_klei.po" -Destination "$file_path\strings_preinstalled_zh_klei.po(此为原目录的翻译，去掉括号内的内容以及两边的括号即可用 $date)"
-
-judge -Name "移动原翻译目录的翻译文件到当前游戏根目录 并 重命令为 strings_preinstalled_zh_klei.po(此为原目录的翻译，去掉括号内的内容以及两边的括号即可用 $date)"
-
-Move-Item -Path "$file_path\strings.po" -Destination "$now_path\strings_preinstalled_zh_klei.po"
-
-judge -Name "移动max翻译到翻译目录 并  更改strings.po的名字为 strings_preinstalled_zh_klei.po"
-
-
-Write-Output "更新max翻译完成"
-Write-Output "请进入游戏选择官中 (wg没得选，直接就是max翻译)"
-Write-Output "实质是把官中的文件给替换掉了  相当于 重命名 -- 替换"
+Write-Output "更新max翻译完成" "    "
+Write-Output "请进入游戏直接就是max翻译" "    "
+Write-Output "有问题？来GitHub 反馈  " "   "  "https://github.com/zsnmwy/max-translation-update-script"
 Remove-Item "$file_path\max.zip"
 Pause
