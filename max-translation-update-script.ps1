@@ -14,7 +14,7 @@ function judge {
     }
     else {
         Write-Output "$Name 失败"
-        Write-Output "    " "来github提issue" "https://github.com/zsnmwy/max-translation-update-script"
+        Write-Output "    " "搞不定就来github提issue" "https://github.com/zsnmwy/max-translation-update-script"
         Pause
         exit
     }
