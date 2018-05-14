@@ -1,6 +1,6 @@
 #Author zsnmwy
 #https://github.com/zsnmwy/max-translation-update-script
-
+#获取稳定版 V1
 Write-Output "   "  "请不要在脚本运行目录 存放  max.zip 以及 strings.po" " " " " "会被删掉的"
 Pause
 
