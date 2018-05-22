@@ -1,0 +1,5 @@
+max.onical.ga {
+    gzip
+    tls jane35622@163.com
+    root /usr/local/caddy/max.onical.ga
+ }
