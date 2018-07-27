@@ -61,7 +61,7 @@ if ("$judge_file_po" -eq "True") {
     judge -Name "删除strings.po"
 }
 
-$data = Invoke-WebRequest $api_url
+$data = Invoke-WebRequest $api_url -UseBasicParsing
 judge -Name "请求Workshop API"
 $decode = ConvertFrom-Json $data.content
 
@@ -70,7 +70,7 @@ judge -Name "解析file—url"
 
 Write-Output "file-url 为 $file_url"
 
-Invoke-WebRequest $file_url -OutFile "$file_path\max.zip"
+Invoke-WebRequest $file_url -OutFile "$file_path\max.zip" -UseBasicParsing
 
 judge -Name "下载最新max汉化"
 
