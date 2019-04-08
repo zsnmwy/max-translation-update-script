@@ -3,8 +3,8 @@
 #获取稳定版 V1
 Write-Output "   "  "请不要在脚本运行目录 存放  max.zip 以及 strings.po" " " " " "会被删掉的"
 
-Write-Output "本脚本是专门更新 EU版本 在 测试期间 的 Beta版 的 max汉化"
-Write-Output "一旦EU版本从测试版进入正式版，本脚本即可视为报废。  请使用稳定版本的脚本去更新翻译。"
+Write-Output "本脚本是专门更新 在 测试期间 的 Beta版 的 max汉化"
+Write-Output "一旦从测试版进入正式版，本脚本即可视为报废。  请使用稳定版本的脚本去更新翻译。"
 Pause
 
 function judge {
@@ -25,8 +25,8 @@ function judge {
 
 $api_url = "http://steamworkshopdownloader.com/api/workshop/1440373530"
 $file_path = "$pwd"
-$wegame_path = "$pwd\OxygenNotIncluded_rail_Data\StreamingAssets\Mods"
-$steam_path = "$pwd\OxygenNotIncluded_Data\StreamingAssets\Mods"
+$wegame_path = "$pwd\OxygenNotIncluded_rail_Data\StreamingAssets\strings"
+$steam_path = "$pwd\OxygenNotIncluded_Data\StreamingAssets\strings"
 
 $ErrorActionPreference = "SilentlyContinue"
 $judge_wegame_path = Test-Path "$wegame_path"
