@@ -22,8 +22,8 @@ function judge {
 
 $api_url = "http://steamworkshopdownloader.com/api/workshop/935864920"
 $file_path = "$pwd"
-$wegame_path = "$pwd\OxygenNotIncluded_rail_Data\StreamingAssets\Mods"
-$steam_path = "$pwd\OxygenNotIncluded_Data\StreamingAssets\Mods"
+$wegame_path = "$pwd\OxygenNotIncluded_rail_Data\StreamingAssets\strings"
+$steam_path = "$pwd\OxygenNotIncluded_Data\StreamingAssets\strings"
 
 $ErrorActionPreference = "SilentlyContinue"
 $judge_wegame_path = Test-Path "$wegame_path"
